@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IELTS Academic Reading Mock Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f8;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        header {
+            background-color: #002d5a;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        .tabs {
+            display: flex;
+            background-color: #e0e0e0;
+            border-bottom: 2px solid #ccc;
+        }
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            border-right: 1px solid #ccc;
+        }
+        .tab:hover { background-color: #d0d0d0; }
+        .tab.active { background-color: white; border-bottom: 2px solid white; margin-bottom: -2px; }
+        
+        .main-content {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+        .split-pane {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: white;
+            margin: 10px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        .passage-content { font-size: 1.05rem; line-height: 1.6; }
+        .question-block { margin-bottom: 20px; padding: 15px; background: #fafafa; border: 1px solid #ddd; }
+        .question-block h3 { margin-top: 0; }
+        
+        input[type="text"] {
+            padding: 5px;
+            border: 1px solid #aaa;
+            border-radius: 3px;
+            width: 200px;
+        }
+        select {
+            padding: 5px;
+            border: 1px solid #aaa;
+            border-radius: 3px;
+        }
+        
+        .footer {
+            background-color: #002d5a;
+            color: white;
+            padding: 15px;
+            text-align: right;
+        }
+        button.submit-btn {
+            background-color: #e50000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        button.submit-btn:hover { background-color: #cc0000; }
+        
+        /* Hidden class for tabs */
+        .hidden { display: none; }
+        
+        /* Results Modal */
+        #results {
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+            z-index: 1000;
+            text-align: center;
+            border-radius: 8px;
+            display: none;
+        }
+        #overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+            display: none;
+        }
+        .correct { background-color: #d4edda !important; border-color: #c3e6cb !important; }
+        .incorrect { background-color: #f8d7da !important; border-color: #f5c6cb !important; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>IELTS Academic Reading</h1>
+    <div>Time remaining: <span id="timer">60:00</span></div>
+</header>
+
+<div class="tabs">
+    <div class="tab active" onclick="switchTab(1)" id="tab1">Reading Passage 1</div>
+    <div class="tab" onclick="switchTab(2)" id="tab2">Reading Passage 2</div>
+    <div class="tab" onclick="switchTab(3)" id="tab3">Reading Passage 3</div>
+</div>
+
+<div class="main-content">
+    <div class="split-pane" id="passage-pane">
+        
+        <div id="passage1" class="passage-content">
+            <h2>The Life Cycle of A Star</h2>
+            <p>It has been conservatively estimated that there are some 10,000 billion stars in the universe. It is difficult to know the exact age of a star (astronomers have identified stars as young as 25,000 years old and others are thought to be over 10 billion years old), but what astronomers do know is that there are many different kinds. How each star is formed, and its mass, influences its type and longevity.</p>
+            <p>A star is born in a nebula, which is a giant cloud of gas and dust. The larger the amount of matter that is in the nebula, the greater the mass of the star that is created. Inside these nebulae are dense areas of gas, which, due to their density have a stronger gravitational pull than the rest of the nebula. Gradually, gravity drags the gas in the nebula together and it begins to spin and become increasingly hotter. Once the temperature reaches 15,000,000°C, nuclear fusion occurs in the center of the cloud, and it begins to glow brightly. It stabilizes at this temperature, contracts slightly and becomes what is known as a main sequence star (an example of this is our own Sun). It can remain in this stage for millions or billions of years.</p>
+            <p>As it glows, hydrogen in the centre (through the nuclear fusion) becomes helium. Eventually the hydrogen supply in the core diminishes and the core of the star becomes unstable, contracting more. However, the outer parts of the star (which are still mainly hydrogen) expand and cool, and in doing so, the star starts to glow red. It is at this stage that the star becomes a red giant. It is anticipated that it will take the Sun another 5 billion years to reach this stage. By then it will have grown large enough to engulf the three closest planets (Mercury, Venus and Earth) and glow 2,000 times brighter then it currently does.</p>
+            <p>Exactly how a star will react in the red giant phase depends on its mass. Throughout the red giant phase, the hydrogen in the outer parts carries on burning and the center gets hotter. On reaching 200,000,000°C, the helium atoms fuse forming carbon atoms. The remainder of the hydrogen explodes and forms a ring around the core called a planetary nebula.</p>
+            <p>With medium-sized stars, once the final helium atoms have fused into carbon atom, the star starts to die. The gravitational pull leads to the last of the star's matter collapsing inwards and compacting to become extremely dense. A star like this is called a white dwarf. It will shine white-hot until the remaining energy (thermal energy trapped in its interior) has been exhausted after which it will no longer emit light. This can take in excess of several billion years. It is then termed a black dwarf (a cold, dark star, perhaps replete with diamonds) and remains in that stage forever.</p>
+            <p>When the larger red giants (massive stars) collapse, which happens in an instant, so much planetary nebula is created that this gas and dust can be used as a building material for planets in developing solar systems. In addition, with massive stars, as the temperature increases, the carbon atoms get pulled together to form increasingly heavier elements like oxygen, nitrogen and finally iron. Once this happens, fusion ceases and the iron atoms begin absorbing energy. At some point in the future, this energy is released in a huge explosion called a supernova. A supernova can have a core temperature of up to 1,000,000,000°C and the explosion can light up the sky for weeks, outshining an entire galaxy. Astronomers believe that Earth is made up of elements formed from the inside of stars, in particular red giants that exploded as supernovas. These massive stars have an average life span of one million years.</p>
+            <p>After becoming a supernova, the remaining core of a massive star that is 1.5 to 4 times as massive as the Sun becomes a neutron star. It starts to spin and often emits radio waves. If these waves occur in pulses, the neutron star is referred to as a pulsar. When a massive star has eight or more times the mass of the Sun, it will remain massive after the supernova. It has no nuclear fusion supporting the core and becomes engulfed by its own gravity. This results in a black hole, which sucks in any matter or energy that passes close to it. The gravitational field of a black hole is powerful enough to prevent the escape of light and is so dense that it cannot be measured.</p>
+            <p>The phrase "black hole" originated from the physicist John Archibald Wheeler, before this, black holes were known as 'frozen stars.' Wheeler came up with this name two years before the proof of the existence of the first black hole, Xray binary star Cygnus X-1, in 1971. Astronomers think that there may be a black hole at the center of each galaxy. The life cycle of a star is really that the materials from an exploded star mix with the hydrogen of the universe. This mixture in turn will be the starting point of the next star. The Sun is a case in point, containing the debris from numerous other stars that exploded long before the Sun was born.</p>
+        </div>
+
+        <div id="passage2" class="passage-content hidden">
+            <h2>The Race to Make Spider Silk</h2>
+            <p>The strength, toughness, and elasticity of silk continue to fascinate scientists who wonder what gives this natural material its unusual qualities. Finer than human hair, lighter than cotton, and ounce for ounce stronger than steel, silk is of special interest to materials researchers. They are trying to duplicate its properties and synthesis it for large-scale production. Silk holds the promise of wear-resistant shoes and clothes; stronger ropes, nets, seatbelts and parachutes; rust free panels and bumpers for automobiles; improved sutures and bandages; artificial tendons and ligaments supports for weakened, blood vessels as well as bulletproof vests.</p>
+            <p>Many insects secrete silks of varying quality. Best known is the moth bombyx mori, whose caterpillar is commonly known as the silkworm. It spins its cocoon from a single thread between 300 and 900 meters long and has been used for centuries to make fine garments. But the focus of scientific attention today is on spider silk: tougher, stretchier, and more waterproof than silkworm strands. Spiders make as many as seven different types of silk, but one spider and two types of silk are at the centre of intense interest. The spider is the golden orb-weaving spider, Nephila Clavipes. Its two silks under investigation go by the evocative names: 'dragline' and 'capture'.</p>
+            <p>Dragline is the silk which forms the frame for the wheel-shaped webs and enables the dangling spider to drop down and grab its prey. This silk exhibits a combination of strength and toughness unmatched by highperformance synthetic fibre. Capture silk is the resilient substance at the centre of the web. To catch a speeding insect; it may stretch to almost three times its original length. Insects entangle in the sticky web because the stretchiness of capture silk lets the web move back and forth after the insect hits it. If the web were still, the insect might just bounce off. Whereas dragline is stronger, capture silk is much flexible, five times more flexible in fact.</p>
+            <p>Because the orb weaver's survival depends on its silk, some 400 million years of evolution have fine-tuned a remarkably tough and versatile material. Now research groups all over the world are competing to spin the first artificial spider silk, a job that require a three-step approach to determine the fibre's molecular architecture, to understand the genes that yield silk proteins, and then to learn how to turn the raw material into threads. The first two steps are well underway. The molecular structure for both dragline and capture silk is discovered and now researchers have cloned several genes for the silks proteins and unraveled their protein structure.</p>
+            <p>The next step is to find hosts for the artificial genes. Plants and fungi, as well as bacteria, are being considered. If a hardy plant could express a dragline silk gene, silk proteins could eventually be harvested in large quantities, processed into a liquid polymer, and spun in factories. A different experimental approach is to insert the web gene into goats in order to collect the protein from the goats' milk. Goats are being used instead of the simpler and much cheaper bacteria, because the secret of the protein's strength lies in how the molecules cross-link with one another. When bacteria are used to make artificial web, the protein folds in a way that prevents it from cross-linking properly, resulting in hard white lumps. The spider makes protein in a manner similar to the way mammals make milk, so the researchers hope that the protein made in the goats' mammary glands will be able to cross-link properly. Once the protein is extracted from the goats' milk, the next step is to find a way to spin it.</p>
+            <p>Spiders make their silk in environmentally friendly ways. They process proteins from water-based solutions which, from a manufacturing point of view, is very attractive. The process of making synthetic fibres like nylon, on the other hand, requires petroleum products or organic solvents and results in pollution. So, biotechnologists are motivated by both the practical and economic potential of generating artificial spider silk. Globally, as much as 60 per cent of the threads used to weave clothing come from natural fibre, including cotton, wool, and silk. The aim is to offer substitutes for natural fibres that are free of the problems of poor wash-wear performance: stretching, wrinkling and shrinkage. They are seeking a betterthan-natural alternative fibre for which there is a major market. Bio-inspired materials are providing a new frontier for the fibre business.</p>
+        </div>
+
+        <div id="passage3" class="passage-content hidden">
+            <h2>Homer's Literary Legacy</h2>
+            <p><strong>A</strong> Until the last tick of history's clock, cultural transmission meant oral transmission and poetry, passed from mouth to ear, was the principal medium of moving information across space and from one generation to the next. Oral poetry was not simply a way of telling lovely or important stories, or of flexing the imagination. It was, argues the classic is Eric Havelock, a "massive repository of useful knowledge, a sort of encyclopedia of ethics, politics, history and technology which the effective citizen was required to learn as the core of his educational equipment". The great oral works transmitted a shared cultural heritage, held in common not on bookshelves, but in brains. In India, an entire class of priests was charged with memorizing the Vedas with perfect fidelity. In pre-Islamic Arabia, people known Rawis were often attached to poets as official memorizers. The Buddha's teachings were passed down in an unbroken chain of oral tradition for four centuries until they were committed to writing in Sri Lanka in the first century B.C.</p>
+            <p><strong>B</strong> The most famous of the Western tradition's oral works, and the first to have been systematically studied, were Homer's Odyssey and Iliad. These two poems - possibly the first to have been written down in the Greek alphabet had long been held up as literary archetypes. However, even as they were celebrated as the models to which all literature should aspire, Homer's masterworks had also long been the source of scholarly unease. The earliest modern critics sensed that they were somehow qualitatively different from everything that came after - even a little strange. For one thing, both poems were oddly repetitive in the way they referred to characters. Odysseus was always "clever Odysseus". Dawn was always "rosy-fingered". Why would someone write that? Sometimes the epithets seemed completely off-key. Why call the murderer of Agamemnon "blameless Aegisthus?" Why refer to "swift-footed Achilles" even when he was sitting down? Or to "laughing Aphrodite" even when she was in tears? In terms of both structure and theme, the Odyssey and Iliad were also oddly formulaic, to the point of predictability. The same narrative units- gathering armies, heroic shields, challenges between rivals - pop up again and again, only with different characters and different circumstances. In the context of such finely spun, deliberate masterpieces, these quirks seemed hard to explain.</p>
+            <p><strong>C</strong> At the heart of the unease about these earliest works of literature were two fundamental questions: first, how could Greek literature have been born ex nihilo with two masterpieces? Surely a few less perfect stories must have come before, and yet these two were among the first on record. And second, who exactly was their author? Or was it authors? There were no historical records of Homer, and no trustworthy biography of the man exists beyond a few self-referential hints embedded in the texts themselves.</p>
+            <p><strong>D</strong> Jeans-Jacques Rousseau was one of the first modern critics to suggest that homer might not have been an author in the contemporary sense of a single person who sat dawn and wrote a story and then published it for others to read. In his 1781 essay on the Origin of Language, the Swiss philosopher suggested that the Odyssey and Iliad might have been "written only in men's memories. Somewhat later they were laboriously collected in writing" though that was about as far as his enquiry into the matter went.</p>
+            <p><strong>E</strong> In 1975, the German philologist, Friedrich August Wolf argued for the first time that not only were Homer's works not written down by Homer, but they weren't even by Homer. They were, rather, a loose collection of songs transmitted by generations of Greek bards, and only redacted in their present form at some later date. In 1920, an eighteen-year-old scholar named Mailman Parry took up the question of Homeric authorship as his master's thesis at the university of California, Berkeley. He suggested that the reason Homer's epics seemed unlike other literature was because they were unlike other literature. Parry had discovered what Wood and Wolf had missed: The evidence that the poems had been transmitted orally was right there in the text itself. All those stylistic quirks, including the formulaic, and recurring plot elements and the bizarrely repetitive epithets "clever Odysseus" and "gray-eyed Athena" that had always perplexed readers were actually like thumbprints left by a potter: material evidence of how the poem has been craft. They were mnemonic aids that helped the band(s) fit the meter and pattern of the line, and remember the essence of the poems.</p>
+            <p><strong>F</strong> The greatest author of antiquity was actually, Parry argued just, "one of a long tradition of oral poets that ...composed wholly without the aid of writing". Parry realized that if you were setting out to create memorable poems, the Odyssey and the Iliad were exactly the kind of poems you'd create. It's said that clichés are the worst sin a writer can commit, but to an oral bard, they were essential. The very reason that clichés so easily seep into our speech and writing their insidious memorability is exactly why they played such an important role in oral storytelling. The principles that the oral bards discovered as they sharpened their stories through telling and retelling were the same mnemonic principle that psychologists rediscovered when they began conducting their first scientific experiments on memory around the turn of the twentieth century. Words that rhyme are much more memorable than words that don't, and concrete nouns are easier to remember than abstract ones. Finding patterns and structure in information is how our brains extract meaning from the world, and putting words to music and rhyme is a way of adding extra levels of pattern and structure to language.</p>
+        </div>
+    </div>
+
+    <div class="split-pane" id="questions-pane">
+        
+        <div id="questions1">
+            <div class="question-block">
+                <h3>Questions 1-6</h3>
+                <p>Choose ONE of the types or stages A-H from the box below which best matches the descriptions.</p>
+                <div style="background:#eee; padding:10px; margin-bottom:10px;">
+                    A) nebula &nbsp;&nbsp; B) main sequence &nbsp;&nbsp; C) red giant &nbsp;&nbsp; D) white dwarf<br>
+                    E) black dwarf &nbsp;&nbsp; F) supernova &nbsp;&nbsp; G) neutron star &nbsp;&nbsp; H) black hole
+                </div>
+                <p>Example: hottest, brightest point of a star -> F</p>
+                <label>1. the Sun</label> <input type="text" id="q1" maxlength="1" style="width: 30px; text-transform: uppercase;"><br><br>
+                <label>2. birth place of a star</label> <input type="text" id="q2" maxlength="1" style="width: 30px; text-transform: uppercase;"><br><br>
+                <label>3. a dying star</label> <input type="text" id="q3" maxlength="1" style="width: 30px; text-transform: uppercase;"><br><br>
+                <label>4. sometimes has pulsating waves</label> <input type="text" id="q4" maxlength="1" style="width: 30px; text-transform: uppercase;"><br><br>
+                <label>5. its size is immeasurable</label> <input type="text" id="q5" maxlength="1" style="width: 30px; text-transform: uppercase;"><br><br>
+                <label>6. its supply of energy has run out</label> <input type="text" id="q6" maxlength="1" style="width: 30px; text-transform: uppercase;"><br>
+            </div>
+
+            <div class="question-block">
+                <h3>Questions 7-13</h3>
+                <p>Complete the sentences using <strong>NO MORE THAN THREE WORDS</strong> for each answer.</p>
+                <p>7. Hydrogen will turn into helium after <input type="text" id="q7"> occurs.</p>
+                <p>8. The colour of the red giant is formed as the <input type="text" id="q8"> becomes smaller and the outer areas cool.</p>
+                <p>9. At 200,000,000°C the star's helium atoms fuse into carbon atoms, and then the star <input type="text" id="q9">.</p>
+                <p>10. Unlike small and medium-sized stars, large stars <input type="text" id="q10"> quickly.</p>
+                <p>11. A black hole's <input type="text" id="q11"> stops light from being emitted.</p>
+                <p>12. Astronomers knew about <input type="text" id="q12"> before they were able to confirm their existence.</p>
+                <p>13. Planets and stars are likely to consist of <input type="text" id="q13"> from exploded celestial bodies.</p>
+            </div>
+        </div>
+
+        <div id="questions2" class="hidden">
+            <div class="question-block">
+                <h3>Questions 14-18</h3>
+                <p>Classify the following as relating to:</p>
+                <p><strong>A</strong> the silk of bombyx mori<br><strong>B</strong> dragline silk of Nephila Clavipes<br><strong>C</strong> capture silk of Nephila Clavipes</p>
+                <p>Example: forms the cocoon -> A</p>
+                <p>14. forms the framework of a web <select id="q14"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option></select></p>
+                <p>15. most elastic silk <select id="q15"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option></select></p>
+                <p>16. allows predator to drop quickly <select id="q16"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option></select></p>
+                <p>17. single strand can be up to 900 metres long <select id="q17"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option></select></p>
+                <p>18. strongest silk <select id="q18"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option></select></p>
+            </div>
+
+            <div class="question-block">
+                <h3>Questions 19-23</h3>
+                <p>Do the following statements reflect the claims of the writer in the passage? Choose:</p>
+                <p><strong>YES</strong> if the statement reflects the claims of the writer<br><strong>NO</strong> if the statement contradicts the writer<br><strong>NOT GIVEN</strong> if there is no information about this</p>
+                <p>19. All spiders secrete silk. <select id="q19"><option value=""></option><option value="YES">YES</option><option value="NO">NO</option><option value="NOT GIVEN">NOT GIVEN</option></select></p>
+                <p>20. Artificial genes for spider silk have been produced. <select id="q20"><option value=""></option><option value="YES">YES</option><option value="NO">NO</option><option value="NOT GIVEN">NOT GIVEN</option></select></p>
+                <p>21. Spider silk production occurs naturally in goats' milk. <select id="q21"><option value=""></option><option value="YES">YES</option><option value="NO">NO</option><option value="NOT GIVEN">NOT GIVEN</option></select></p>
+                <p>22. China is reading research efforts in the area of spider silk. <select id="q22"><option value=""></option><option value="YES">YES</option><option value="NO">NO</option><option value="NOT GIVEN">NOT GIVEN</option></select></p>
+                <p>23. Spider silk is now being produced commercially. <select id="q23"><option value=""></option><option value="YES">YES</option><option value="NO">NO</option><option value="NOT GIVEN">NOT GIVEN</option></select></p>
+            </div>
+            
+            <div class="question-block">
+                <h3>Questions 24-26</h3>
+                <p>Using <strong>NO MORE THAN THREE WORDS</strong> from the passage for each answer, complete the following.</p>
+                <p>24. Main problem in the production of synthetic fibres: <input type="text" id="q24"></p>
+                <p>25. 3 disadvantages of natural fibres: <input type="text" id="q25" style="width: 300px;" placeholder="list all three separated by commas"></p>
+                <p>26. Proportion of clothing made from natural fibre: <input type="text" id="q26"></p>
+            </div>
+        </div>
+
+        <div id="questions3" class="hidden">
+            <div class="question-block">
+                <h3>Questions 27-32</h3>
+                <p>Reading Passage 3 has six paragraphs, A-F. Which paragraph contains the following information?</p>
+                <p>27. The claim that the Odyssey and Iliad were not poems in their original form. <input type="text" id="q27" maxlength="1" style="width: 30px; text-transform: uppercase;"></p>
+                <p>28. A theory involving the reinterpretation of the term 'author'. <input type="text" id="q28" maxlength="1" style="width: 30px; text-transform: uppercase;"></p>
+                <p>29. References to the fact that little is known about Homer's life. <input type="text" id="q29" maxlength="1" style="width: 30px; text-transform: uppercase;"></p>
+                <p>30. A comparison between the construction of Homer's poems and another art form. <input type="text" id="q30" maxlength="1" style="width: 30px; text-transform: uppercase;"></p>
+                <p>31. Examples of the kinds of people employed to recall language. <input type="text" id="q31" maxlength="1" style="width: 30px; text-transform: uppercase;"></p>
+                <p>32. Doubts regarding Homer's apparently inappropriate descriptions. <input type="text" id="q32" maxlength="1" style="width: 30px; text-transform: uppercase;"></p>
+            </div>
+
+            <div class="question-block">
+                <h3>Questions 33 and 34</h3>
+                <p>Choose TWO letters, A-E. Which TWO of these points are made by the writer of the text about the Odyssey and the Iliad?</p>
+                <p>A. They are sometimes historically inaccurate.<br>B. It is uncertain which century they were written in.<br>C. Their content is very similar.<br>D. Later writers referred to them as ideal examples of writing.<br>E. There are stylistic differences between them.</p>
+                <p>33. <input type="text" id="q33" maxlength="1" style="width: 30px; text-transform: uppercase;"> &nbsp; 34. <input type="text" id="q34" maxlength="1" style="width: 30px; text-transform: uppercase;"></p>
+            </div>
+            
+            <div class="question-block">
+                <h3>Questions 35 and 36</h3>
+                <p>Choose TWO letters, A-E. Which TWO of the following theories does the writer of the text refer to?</p>
+                <p>A. Homer wrote his work during a period of captivity.<br>B. Neither the Odyssey nor the Iliad were written by Homer.<br>C. Homer created the Odyssey and Iliad without writing them down.<br>D. Homer may have suffered from a failing memory in later life.<br>E. The oral and written version of Homer's work may not be identical.</p>
+                <p>35. <input type="text" id="q35" maxlength="1" style="width: 30px; text-transform: uppercase;"> &nbsp; 36. <input type="text" id="q36" maxlength="1" style="width: 30px; text-transform: uppercase;"></p>
+            </div>
+
+            <div class="question-block">
+                <h3>Questions 37-40</h3>
+                <p>Complete the summary below. Choose <strong>ONE WORD ONLY</strong> from the passage for each answer.</p>
+                <p>Spoken poetry was once the means by which each 37. <input type="text" id="q37"> of a particular culture or community could pass on its knowledge. Indeed, it has been suggested that it was the duty of a 38. <input type="text" id="q38"> to know poetry so they would be informed about subjects such as politics and history.</p>
+                <p>Psychologists now know that when people are trying to remember information, they may find it difficult to remember words that express 39. <input type="text" id="q39"> ideas. It is easier to remember words which sounds similar or go together with 40. <input type="text" id="q40">.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <button class="submit-btn" onclick="submitTest()">Submit Test</button>
+</div>
+
+<div id="overlay"></div>
+<div id="results">
+    <h2>Test Completed!</h2>
+    <h1 id="scoreDisplay"></h1>
+    <h3 id="bandDisplay" style="color: #002d5a;"></h3>
+    <button class="submit-btn" onclick="closeResults()" style="background-color: #002d5a; margin-top: 20px;">Review Answers</button>
+</div>
+
+<script>
+    // Tab switching logic
+    function switchTab(tabIndex) {
+        for(let i=1; i<=3; i++) {
+            document.getElementById('tab'+i).classList.remove('active');
+            document.getElementById('passage'+i).classList.add('hidden');
+            document.getElementById('questions'+i).classList.add('hidden');
+        }
+        document.getElementById('tab'+tabIndex).classList.add('active');
+        document.getElementById('passage'+tabIndex).classList.remove('hidden');
+        document.getElementById('questions'+tabIndex).classList.remove('hidden');
+    }
+
+    // Answers dictionary
+    const answers = {
+        q1: ["B"], q2: ["A"], q3: ["D"], q4: ["G"], q5: ["H"], q6: ["E"],
+        q7: ["nuclear fusion"], 
+        q8: ["core"], 
+        q9: ["starts to die"], 
+        q10: ["exploded", "collapse", "exploded/collapse"], 
+        q11: ["gravity", "gravitational field", "gravity/gravitational field"], 
+        q12: ["black holes"], 
+        q13: ["debris", "materials", "debris/materials"],
+        q14: ["B"], q15: ["C"], q16: ["B"], q17: ["A"], q18: ["B"],
+        q19: ["NOT GIVEN"], q20: ["YES"], q21: ["NO"], q22: ["NOT GIVEN"], q23: ["NO"],
+        q24: ["pollution"], 
+        q25: ["stretching, wrinkling, shrinkage", "stretching wrinkling shrinkage"], // must have all 3
+        q26: ["60%", "60 percent"],
+        q27: ["E"], q28: ["D"], q29: ["C"], q30: ["E"], q31: ["A"], q32: ["B"],
+        q37: ["generation"], q38: ["citizen"], q39: ["abstract"], q40: ["music"]
+    };
+
+    function cleanString(str) {
+        return str.trim().toLowerCase().replace(/\s+/g, ' ');
+    }
+
+    function calculateBand(score) {
+        if(score >= 39) return "9.0";
+        if(score >= 37) return "8.5";
+        if(score >= 35) return "8.0";
+        if(score >= 33) return "7.5";
+        if(score >= 30) return "7.0";
+        if(score >= 27) return "6.5";
+        if(score >= 23) return "6.0";
+        if(score >= 19) return "5.5";
+        if(score >= 15) return "5.0";
+        if(score >= 13) return "4.5";
+        if(score >= 10) return "4.0";
+        if(score >= 8) return "3.5";
+        if(score >= 6) return "3.0";
+        if(score >= 4) return "2.5";
+        return "0 - 2.0";
+    }
+
+    function submitTest() {
+        let score = 0;
+
+        // Check standard 1-32, 37-40
+        for(let key in answers) {
+            let el = document.getElementById(key);
+            if(!el) continue;
+            
+            let userVal = cleanString(el.value);
+            let correctArr = answers[key].map(cleanString);
+            
+            // Special check for q25 (needs all three words)
+            if(key === 'q25') {
+                if(userVal.includes('stretching') && userVal.includes('wrinkling') && userVal.includes('shrinkage')) {
+                    score++;
+                    el.classList.add('correct');
+                } else {
+                    el.classList.add('incorrect');
+                }
+                continue;
+            }
+
+            if(correctArr.includes(userVal)) {
+                score++;
+                el.classList.add('correct');
+            } else {
+                el.classList.add('incorrect');
+            }
+        }
+
+        // Check 33 & 34 (Either order: C, D)
+        let q33 = cleanString(document.getElementById('q33').value);
+        let q34 = cleanString(document.getElementById('q34').value);
+        let set33_34 = [q33, q34];
+        if(set33_34.includes('c')) { score++; document.getElementById(q33==='c'?'q33':'q34').classList.add('correct'); }
+        if(set33_34.includes('d')) { score++; document.getElementById(q33==='d'?'q33':'q34').classList.add('correct'); }
+        if(!set33_34.includes('c') && q33 !== 'd') document.getElementById('q33').classList.add('incorrect');
+        if(!set33_34.includes('d') && q34 !== 'c') document.getElementById('q34').classList.add('incorrect');
+
+        // Check 35 & 36 (Either order: B, C)
+        let q35 = cleanString(document.getElementById('q35').value);
+        let q36 = cleanString(document.getElementById('q36').value);
+        let set35_36 = [q35, q36];
+        if(set35_36.includes('b')) { score++; document.getElementById(q35==='b'?'q35':'q36').classList.add('correct'); }
+        if(set35_36.includes('c')) { score++; document.getElementById(q35==='c'?'q35':'q36').classList.add('correct'); }
+        if(!set35_36.includes('b') && q35 !== 'c') document.getElementById('q35').classList.add('incorrect');
+        if(!set35_36.includes('c') && q36 !== 'b') document.getElementById('q36').classList.add('incorrect');
+
+        // Display results
+        document.getElementById('scoreDisplay').innerText = `Raw Score: ${score} / 40`;
+        document.getElementById('bandDisplay').innerText = `Estimated Band Score: ${calculateBand(score)}`;
+        document.getElementById('overlay').style.display = 'block';
+        document.getElementById('results').style.display = 'block';
+    }
+
+    function closeResults() {
+        document.getElementById('overlay').style.display = 'none';
+        document.getElementById('results').style.display = 'none';
+    }
+
+    // Simple Timer
+    let timeLimit = 3600; // 60 minutes
+    setInterval(() => {
+        if(timeLimit <= 0) return;
+        timeLimit--;
+        let m = Math.floor(timeLimit / 60);
+        let s = timeLimit % 60;
+        document.getElementById('timer').innerText = `${m}:${s < 10 ? '0' : ''}${s}`;
+    }, 1000);
+</script>
+
+</body>
+</html>
